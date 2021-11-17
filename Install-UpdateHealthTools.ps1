@@ -43,7 +43,7 @@ Write-Log $SectionLine
 #Check for the presence of Update Health Tools
 
 $UHS = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -match “Microsoft Update Health Tools”}
-if ($UHS -ne "null")
+if (-not[string]::IsNullOrEmpty($UHS))
 
 {
     Write-Log "Update Health Tool already exist on this device"
